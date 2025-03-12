@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Rentabilidade</title>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h2 {
+            color: #002855;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 90%;
+            min-height: 400px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .export-btn {
+            background-color: #fdb813;
+            color: #002855;
+            border: none;
+        }
+
+        .export-btn:hover {
+            background-color: #e0a800;
+        }
+
+        .back-btn {
+            background-color: #002855;
+            color: white;
+            border: none;
+        }
+
+        .back-btn:hover {
+            background-color: #001a40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Gráfico de Rentabilidade</h2>
+        <img src="data:image/png;base64,{{ graph }}" alt="Gráfico de Rentabilidade">
+
+        <a href="{% url 'export_csv' %}{{ request.get_full_path|slice:'9:' }}" class="btn export-btn">
+            📊 Exportar para CSV
+        </a>
+
+        <a href="{% url 'stock_selection' %}" class="btn back-btn">
+            🔙 Voltar
+        </a>
+    </div>
+</body>
+</html>
